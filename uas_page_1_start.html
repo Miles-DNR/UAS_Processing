@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Miles Micheletti, DNR">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process UAS Images</title>
+<link rel="stylesheet" type="text/css" href="uas_css_1.css">
+</head>
+
+<body>
+
+<h1>UAS Report</h1>
+
+<p id="time_object">
+<script> document.getElementById('time_object').innerHTML = Date()</script>
+</p>
+
+<form style="background-color:LightGray;color:DarkSlateGray;border:2px solid DarkSlateGray">
+User:<br>
+<input type="text" name="username"><br>
+Project:<br>
+<input type="text" name="project"><br>
+Project Photos:<br>
+<input type="file" name="photos" multiple><br><br>
+</form>
+
+<form>
+<input type="submit" name="Submit">
+</form>
+
+<br><br><br>
+
+
+<div id="Map" style="width:100%;height:500px"></div>
+
+<script>
+function initMap() {
+	var map_canvas = document.getElementById("Map");
+	var map_options = {mapTypeId: google.maps.MapTypeId.HYBRID};
+	var layer_location = "https://sites.google.com/site/rseqpchi/trees/camera_test.kml";
+	var map = new google.maps.Map(map_canvas,map_options);
+	var tree_layer = new google.maps.KmlLayer({url: layer_location, map: map, });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZt9LuoVoqb-CZMmsZ2mU7mtJBBo-Rv8w&callback=initMap"></script>
+<!-- API key: AIzaSyAZt9LuoVoqb-CZMmsZ2mU7mtJBBo-Rv8w -->
+<!-- KML test layers: https://sites.google.com/site/rseqpchi/trees/camera_test.kml -->
+
+</body>
+</html>
